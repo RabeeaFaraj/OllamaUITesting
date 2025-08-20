@@ -13,7 +13,6 @@ class OllamaPage:
         self.SEND_BUTTON = (By.CLASS_NAME, "lucide-send-horizontal")
     
     
-
     # Actions
     def open(self, url):
         self.driver.get(url)
