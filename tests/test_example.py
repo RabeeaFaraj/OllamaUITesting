@@ -8,7 +8,6 @@ from  tests.driver_factory import get_driver
 
 OLLAMA_URL = os.getenv('OLLAMA_URL', 'http://localhost:3000')  # Default to localhost if not set
 
-
 class OllamaTestCase(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()

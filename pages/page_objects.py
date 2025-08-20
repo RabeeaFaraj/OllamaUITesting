@@ -12,7 +12,6 @@ class OllamaPage:
         self.CHAT_INPUT = (By.NAME, "message")
         self.SEND_BUTTON = (By.CLASS_NAME, "lucide-send-horizontal")
     
-    
     # Actions
     def open(self, url):
         self.driver.get(url)
