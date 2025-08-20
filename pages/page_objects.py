@@ -8,7 +8,7 @@ class OllamaPage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 20)
         self.MODEL_DROPDOWN = (By.CSS_SELECTOR, "button[role='combobox']")
-        self.MODEL_OPTIONS = (By.CSS_SELECTOR, "div[role='dialog'] button")
+        self.MODEL_OPTIONS = (By.XPATH, "//div[@role='dialog']//button[contains(text(),'gemma3:1b')]")
         self.CHAT_INPUT = (By.NAME, "message")
         self.SEND_BUTTON = (By.CLASS_NAME, "lucide-send-horizontal")
     

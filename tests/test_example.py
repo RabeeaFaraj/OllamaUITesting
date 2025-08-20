@@ -12,6 +12,7 @@ class OllamaTestCase(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
         self.page = OllamaPage(self.driver)
+        self.driver.implicitly_wait(10)
 
     def tearDown(self):
         self.driver.quit()
