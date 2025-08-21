@@ -4,7 +4,6 @@ from .base_page import BasePage
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
 class SettingsPage(BasePage):
     NAME_INPUT = (By.XPATH, "//input[@placeholder='Enter your name']")
     CHANGE_BTN = (By.XPATH, "//button[normalize-space()='Change name']")

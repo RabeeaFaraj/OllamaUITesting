@@ -8,7 +8,6 @@ from pages.home_page import HomePage
 from pages.settings_page import SettingsPage
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:3000")
 
 class ExampleTestCase(unittest.TestCase):
