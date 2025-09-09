@@ -1,12 +1,13 @@
 from selenium.webdriver.common.by import By
 from .base_page import BasePage
+from selenium.webdriver.support import expected_conditions as EC
 
 class HomePage(BasePage):
     DROPDOWN = (By.CSS_SELECTOR, "button[role='combobox']")
     GEMMA3 = (By.XPATH, "//*[text()='gemma3:1b']")
     MESSAGE_INPUT = (By.NAME, "message")
     SUBMIT_BTN = (By.CSS_SELECTOR, "button[type='submit']")
-    SENT_MESSAGE = (By.XPATH, "//p[text()='Hello! Can you help me with Python?']")
+    SENT_MESSAGE = (By.XPATH, "//p[normalize-space()='Hello! Can you help me with Python?']")
     RESPONSE = (By.CSS_SELECTOR, ".p-4.bg-secondary.text-secondary-foreground.rounded-r-lg.rounded-tl-lg.break-words.max-w-full.whitespace-pre-wrap")
 
     PROFILE_BTN_DESKTOP= (By.ID, "radix-:Rln7mjt6:")
@@ -32,8 +33,14 @@ class HomePage(BasePage):
         return self.get_text(self.SENT_MESSAGE)
 
     def is_response_displayed(self):
-        return self.is_displayed(self.RESPONSE)
-
+        # Wait for the response element to be present and visible, refetching it
+        try:
+            element = self.wait.until(EC.visibility_of_element_located(self.RESPONSE))
+            return element.is_displayed()
+        except Exception as e:
+            # Optionally log or handle the exception
+            return False
+        
     def open_profile_settings(self):
         self.click(self.PROFILE_BTN_DESKTOP)
         self.click(self.SETTINGS_BTN)

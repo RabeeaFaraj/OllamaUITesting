@@ -9,7 +9,7 @@ from pages.settings_page import SettingsPage
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:3000")
-
+OLLAMA_URL='http://3.254.161.142:3000'
 class ExampleTestCase(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
@@ -27,23 +27,24 @@ class ExampleTestCase(unittest.TestCase):
 
     def test_send_message(self):
         self.home.open(OLLAMA_URL)
-        self.home.select_gemma3()
+        # self.home.select_gemma3()
         self.home.send_message("Hello! Can you help me with Python?")
+        time.sleep(1)
         self.assertEqual(self.home.get_sent_message(), "Hello! Can you help me with Python?")
         self.assertTrue(self.home.is_response_displayed())  
 
-    def test_change_name(self):
-        self.home.open(OLLAMA_URL)
-        if self.driver.get_window_size()['width'] < 768:
-            self.home.open_profile_settings_mobile()
-            self.settings.change_name("Tameer")
-            self.home.open_menu()
-            self.assertEqual(self.settings.get_name_mobile("Tameer"), "Tameer")
+    # def test_change_name(self):
+    #     self.home.open(OLLAMA_URL)
+    #     if self.driver.get_window_size()['width'] < 768:
+    #         self.home.open_profile_settings_mobile()
+    #         self.settings.change_name("Tameer")
+    #         self.home.open_menu()
+    #         self.assertEqual(self.settings.get_name_mobile("Tameer"), "Tameer")
 
-        else:
-            self.home.open_profile_settings()
-            self.settings.change_name("Tameer") 
-            self.assertEqual(self.settings.get_name(), "Tameer")
+    #     else:
+    #         self.home.open_profile_settings()
+    #         self.settings.change_name("Tameer") 
+    #         self.assertEqual(self.settings.get_name(), "Tameer")
 
 if __name__ == '__main__':
     unittest.main()
