@@ -15,8 +15,8 @@ class BasePage:
             el.clear()
         el.send_keys(text)
 
-    def get_text(self, locator):
-        return self.wait.until(EC.presence_of_element_located(locator)).text
+    # def get_text(self, locator):
+    #     return self.wait.until(EC.presence_of_element_located(locator)).text
 
     def is_displayed(self, locator):
         return self.wait.until(EC.presence_of_element_located(locator)).is_displayed()

@@ -9,7 +9,7 @@ from pages.settings_page import SettingsPage
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:3000")
-OLLAMA_URL='http://3.254.161.142:3000'
+#OLLAMA_URL='http://108.130.74.105:3000'
 class ExampleTestCase(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
@@ -18,7 +18,7 @@ class ExampleTestCase(unittest.TestCase):
         self.settings = SettingsPage(self.driver)
 
     def tearDown(self):
-        self.driver.quit()
+        self.driver.quit()      
     
     def test_page_title(self):
         self.home.open(OLLAMA_URL)
@@ -29,7 +29,7 @@ class ExampleTestCase(unittest.TestCase):
         self.home.open(OLLAMA_URL)
         # self.home.select_gemma3()
         self.home.send_message("Hello! Can you help me with Python?")
-        time.sleep(1)
+        #time.sleep(1)
         self.assertEqual(self.home.get_sent_message(), "Hello! Can you help me with Python?")
         self.assertTrue(self.home.is_response_displayed())  
 

@@ -29,8 +29,12 @@ class HomePage(BasePage):
         self.type_text(self.MESSAGE_INPUT, msg, clear_first=False)
         self.click(self.SUBMIT_BTN)
 
-    def get_sent_message(self):
-        return self.get_text(self.SENT_MESSAGE)
+    def get_sent_message(self, expected_text="Hello! Can you help me with Python?"):
+        element = self.wait.until(
+        EC.text_to_be_present_in_element(self.SENT_MESSAGE, expected_text)
+    )
+        return expected_text
+
 
     def is_response_displayed(self):
         # Wait for the response element to be present and visible, refetching it
